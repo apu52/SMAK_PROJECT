@@ -129,24 +129,7 @@ const Index = () => {
             </h2>
             <span className="text-blue-100 text-sm">Click 'See Details' to view more and join</span>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {activities.map((activity, idx) => (
-              <div key={idx} className="bg-white dark:bg-blue-950/80 rounded-xl shadow-lg overflow-hidden hover:scale-105 transition-transform duration-300 group relative">
-                <img src={activity.image} alt={activity.title} className="w-full h-40 object-cover" />
-                <div className="p-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="px-2 py-1 text-xs rounded bg-blue-100 text-blue-700 font-semibold">{activity.type}</span>
-                    <span className="text-xs text-blue-400">{activity.date}</span>
-                  </div>
-                  <h3 className="font-bold text-lg text-blue-700 group-hover:text-blue-900 mb-1">{activity.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{activity.description}</p>
-                  <Button size="sm" className="w-full bg-blue-600 text-white font-semibold hover:bg-blue-700" onClick={e => {e.stopPropagation(); handleCardClick(activity);}}>
-                    See Details
-                  </Button>
-                </div>
-              </div>
-            ))}
-          </div>
+          
         </div>
 
         {/* Modal/Popup for activity details */}
@@ -241,16 +224,10 @@ const Index = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            <TeamMemberCard
-              name="Brishabh Raj Prajesh"
-              position="Head"
-              institution="SMAK RESEARCH CLUB"
-              batch=""
-              imageUrl="https://i.postimg.cc/L5ByYYTG/Whats-App-Image-2025-08-13-at-13-01-49-9d0aaa5d.jpg"
-            />
+            
             <TeamMemberCard
               name="Musa M. Bharmal"
-              position="Co Head"
+              position="Head"
               institution="SMAK RESEARCH CLUB"
               batch=" "
               imageUrl="https://i.postimg.cc/6pT0w1Dk/Whats-App-Image-2025-08-13-at-13-01-49-3b92b5a0.jpg"
@@ -326,34 +303,7 @@ const Index = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             {/* Example mentor cards, replace with real data as needed */}
-            <TeamMemberCard
-              name="Dr. Meera Gupta"
-              position="Mentor - Research Methodology"
-              institution="Lady Hardinge Medical College"
-              batch="MD, PhD"
-              imageUrl="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=200&h=200&fit=crop&crop=face"
-            />
-            <TeamMemberCard
-              name="Prof. Rajesh Kumar"
-              position="Mentor - Clinical Research"
-              institution="JIPMER Puducherry"
-              batch="MD, Professor"
-              imageUrl="https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=200&h=200&fit=crop&crop=face"
-            />
-            <TeamMemberCard
-              name="Dr. Kavita Patel"
-              position="Mentor - Medical Education"
-              institution="Grant Medical College"
-              batch="MBBS, Principal"
-              imageUrl="https://images.unsplash.com/photo-1594824475871-2b2d28e2fb0e?w=200&h=200&fit=crop&crop=face"
-            />
-            <TeamMemberCard
-              name="Dr. Arjun Patel"
-              position="Mentor - Innovation & Technology"
-              institution="AIIMS Delhi"
-              batch="MD, Founder"
-              imageUrl="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=200&h=200&fit=crop&crop=face"
-            />
+            
           </div>
         </div>
       </section>

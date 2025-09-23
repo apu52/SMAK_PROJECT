@@ -9,8 +9,17 @@ import { Calendar, User, Eye, Download, PenTool, Sparkles, BookOpen, Users, File
 import { useNavigate } from 'react-router-dom';
 
 const Journal = () => {
+  const [showBoardPopup, setShowBoardPopup] = useState(false);
   const [showPublishPopup, setShowPublishPopup] = useState(false);
+  const [showStartSubmissionPopup, setShowStartSubmissionPopup] = useState(false);
   const navigate = useNavigate();
+  
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   const mainButtons = [
     {
@@ -24,7 +33,7 @@ const Journal = () => {
       title: "Submit Manuscript",
       description: "Unified portal for students and professionals to submit quality content",
       icon: FileText,
-      
+      onClick: () => setShowStartSubmissionPopup(true),
       color: "bg-medical-green"
     },
     {
@@ -148,14 +157,9 @@ const Journal = () => {
     setShowPublishPopup(true);
   };
 
-  const handleGetStarted = () => {
-    setShowPublishPopup(false);
-    navigate('/submit');
-  };
-
-  const handleViewGuidelines = () => {
-    setShowPublishPopup(false);
-    navigate('/Guidelines');
+  // For "Learn More About SJMSR" button
+  const handleLearnMoreClick = () => {
+    scrollToTop();
   };
 
   return (
@@ -220,7 +224,7 @@ const Journal = () => {
               <Card 
                 key={index} 
                 className="overflow-hidden hover:shadow-[var(--shadow-elegant)] transition-all duration-300 cursor-pointer group border-2 hover:border-medical-blue/50"
-                onClick={() => navigate(button.path)}
+                onClick={() => button.onClick ? button.onClick() : button.path && navigate(button.path)}
               >
                 <CardHeader className="text-center pb-4">
                   <div className={`w-20 h-20 mx-auto mb-4 ${
@@ -238,9 +242,7 @@ const Journal = () => {
                 </CardHeader>
                 <CardContent className="text-center">
                   <p className="text-muted-foreground mb-6">{button.description}</p>
-                  <Button className="w-full bg-[image:var(--medical-gradient)] hover:opacity-90 transition-smooth">
-                    Explore
-                  </Button>
+                  
                 </CardContent>
               </Card>
             ))}
@@ -260,7 +262,7 @@ const Journal = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {highlightedJournals.map((journal, index) => (
               <Card key={index} className="overflow-hidden hover:shadow-[var(--shadow-elegant)] transition-all duration-300 border-2 hover:border-medical-green/30">
                 <div className="relative">
@@ -309,7 +311,7 @@ const Journal = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -325,7 +327,7 @@ const Journal = () => {
             </p>
           </div>
           
-          <div className="space-y-8">
+          {/* <div className="space-y-8">
             {featuredArticles.map((article, index) => (
               <Card key={index} className="overflow-hidden hover:shadow-[var(--shadow-elegant)] transition-shadow duration-300">
                 <div className="md:flex">
@@ -374,7 +376,7 @@ const Journal = () => {
                 </div>
               </Card>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -411,7 +413,7 @@ const Journal = () => {
             </h2>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {recentPublications.map((article, index) => (
               <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
                 <CardHeader>
@@ -436,7 +438,7 @@ const Journal = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -714,14 +716,24 @@ const Journal = () => {
           </div>
 
           <div className="text-center">
-            <Button 
-              size="lg" 
-              onClick={() => navigate('/editorial-board')}
-              className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out transform hover:scale-105 px-8 py-3 rounded-lg font-semibold"
-            >
-              <Users className="mr-2 h-5 w-5" />
-              View Complete Board
-            </Button>
+            
+
+          {/* Board Popup Modal */}
+          {showBoardPopup && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+              <div className="bg-white dark:bg-blue-950 rounded-2xl shadow-2xl max-w-md w-full p-8 relative">
+                <button className="absolute top-3 right-3 text-blue-600 dark:text-blue-200 text-2xl font-bold" onClick={() => setShowBoardPopup(false)}>&times;</button>
+                <div className="text-center">
+                  <Users className="mx-auto mb-4 h-12 w-12 text-blue-600" />
+                  <h2 className="text-2xl font-bold text-blue-700 dark:text-blue-200 mb-2">Editorial & Advisory Board</h2>
+                  <p className="text-base text-muted-foreground mb-4">Detailed board will be available soon.</p>
+                  <Button size="lg" className="w-full bg-blue-600 text-white font-semibold hover:bg-blue-700 mt-2" onClick={() => setShowBoardPopup(false)}>
+                    Close
+                  </Button>
+                </div>
+              </div>
+            </div>
+          )}
           </div>
         </div>
       </section>
@@ -758,11 +770,11 @@ const Journal = () => {
                   <li className="flex items-center"><span className="w-2 h-2 bg-medical-blue rounded-full mr-2"></span>Upload portal instructions</li>
                 </ul>
                 <Button 
-  onClick={() => window.open("/Guidelines", "_blank")} 
-  className="w-full mt-4 bg-[image:var(--medical-gradient)]"
->
-  View Guidelines
-</Button>
+                  onClick={() => navigate('/Guidelines')}
+                  className="w-full mt-4 bg-[image:var(--medical-gradient)]"
+                >
+                  View Guidelines
+                </Button>
 
               </CardContent>
             </Card>
@@ -790,13 +802,15 @@ const Journal = () => {
                   </div>
                 </div>
                 <Button 
-  variant="outline" 
-  className="w-full mt-4"
-  onClick={() => window.open("/login", "_blank")}
->
-  <PenTool className="mr-2 h-4 w-4" />
-  Start Submission
-</Button>
+                  variant="outline" 
+                  className="w-full mt-4"
+                  onClick={() => {
+                    setShowStartSubmissionPopup(true);
+                  }}
+                >
+                  <PenTool className="mr-2 h-4 w-4" />
+                  Start Submission
+                </Button>
               </CardContent>
             </Card>
           </div>
@@ -974,7 +988,7 @@ const Journal = () => {
           <div className="text-center">
             <Button 
               size="lg" 
-              onClick={() => navigate('/about')}
+              onClick={handleLearnMoreClick}
               className="bg-[image:var(--success-gradient)] hover:opacity-90"
             >
               <BookOpen className="mr-2 h-5 w-5" />
@@ -1079,6 +1093,52 @@ const Journal = () => {
 
             <p className="text-xs text-center text-muted-foreground">
               Explore our journal platform and publication opportunities
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      <Dialog open={showStartSubmissionPopup} onOpenChange={setShowStartSubmissionPopup}>
+        <DialogContent className="sm:max-w-[525px]">
+          <DialogHeader>
+            <DialogTitle>Choose Submission Option</DialogTitle>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <div className="space-y-2">
+              <Button
+                className="bg-[image:var(--medical-gradient)] hover:opacity-90 w-full"
+                size="lg"
+                style={{ marginBottom: '0.5rem' }}
+              >
+                Submit via Google Form
+              </Button>
+              {/* Embedded Google Form */}
+              <div className="w-full h-96 mb-2">
+                <iframe
+                  src="https://forms.gle/ptf4hv5aE6P7UhSs9"
+                  title="Google Form Submission"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  allowFullScreen
+                  style={{ borderRadius: '12px', border: '1px solid #e5e7eb' }}
+                />
+              </div>
+            </div>
+            <Button
+              onClick={() => {
+                setShowStartSubmissionPopup(false);
+                navigate('/login');
+                scrollToTop();
+              }}
+              variant="outline"
+              size="lg"
+              className="w-full"
+            >
+              Submit via Direct Portal
+            </Button>
+            <p className="text-xs text-center text-muted-foreground mt-2">
+              Choose Google Form for quick submission or Direct Portal for enhanced features
             </p>
           </div>
         </DialogContent>

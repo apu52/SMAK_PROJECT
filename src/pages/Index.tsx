@@ -158,10 +158,10 @@ const features = [
 ];
 
 const achievements = [
-  { icon: Trophy, value: '2024', label: 'Established' },
+  { icon: Trophy, value: '2025', label: 'Established' },
   { icon: Users, value: '1000+', label: 'Active Members' },
-  { icon: BookOpen, value: '200+', label: 'Research Papers' },
-  { icon: Globe, value: '50+', label: 'Partner Colleges' }
+  { icon: BookOpen, value: '', label: 'Research Papers' },
+  { icon: Globe, value: '', label: 'Partner Colleges' }
 ];
 
 // Define the values array for "Our Values" section
@@ -275,14 +275,14 @@ const whyJoinFeatures = [
     icon: Microscope,
     title: "Research Mentorship",
     description: "Get mentored by top doctors and researchers for your academic projects.",
-    stats: "100+ Mentors",
+    stats: "30+ Mentors",
     badge: "Mentorship"
   },
   {
     icon: BookOpen,
     title: "Academic Resources",
     description: "Access exclusive study materials, webinars, and journal archives.",
-    stats: "200+ Resources",
+    stats: " ",
     badge: "Academics"
   },
   {
@@ -296,14 +296,14 @@ const whyJoinFeatures = [
     icon: Award,
     title: "Recognition & Awards",
     description: "Earn certificates, awards, recognition and build your CV",
-    stats: "30+ Awards",
+    stats: " ",
     badge: "Recognition"
   },
   {
     icon: Globe,
     title: "Collaborative Projects",
     description: "Participate in multi-institutional research and outreach projects.",
-    stats: "20+ Projects",
+    stats: "10+ Projects",
     badge: "Collaboration"
   }
 ];
@@ -1184,7 +1184,7 @@ return (
             </h2>
           </div>
           
-          <Card className="max-w-5xl mx-auto hover:shadow-2xl transition-all duration-500 overflow-hidden">
+          {/* <Card className="max-w-5xl mx-auto hover:shadow-2xl transition-all duration-500 overflow-hidden">
             <div className="md:flex">
               <div className="md:w-2/5">
                 <img 
@@ -1227,7 +1227,7 @@ return (
                 </CardContent>
               </div>
             </div>
-          </Card>
+          </Card> */}
         </div>
       </section>
 
@@ -1246,7 +1246,7 @@ return (
         </div>
 
         {/* Testimonials Slider */}
-        <div className="relative overflow-hidden mb-20">
+        {/* <div className="relative overflow-hidden mb-20">
           <div className="flex animate-scroll-left">
             {duplicatedTestimonials.map((testimonial, index) => (
               <div
@@ -1277,7 +1277,7 @@ return (
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         {/* Partner Institutions Section */}
         <div className="text-center mb-12">
@@ -1290,7 +1290,7 @@ return (
         </div>
 
         {/* Partners Logo Carousel */}
-        <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-xl shadow-inner py-8">
+        {/* <div className="relative overflow-hidden bg-white dark:bg-gray-800 rounded-xl shadow-inner py-8">
           <div className="flex animate-scroll-right">
             {duplicatedPartners.map((partner, index) => (
               <div
@@ -1310,7 +1310,7 @@ return (
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
 
       <style>{`
@@ -1381,7 +1381,7 @@ return (
               Stay Updated
             </h2>
             <p className="text-xl max-w-3xl mx-auto opacity-90 leading-relaxed">
-              Get latest research calls, event invites, and journal updates directly to your inbox. Join 5000+ medical students already subscribed.
+              Get latest research calls, event invites, and journal updates directly to your inbox. Join 1000+ medical students already subscribed.
             </p>
           </div>
           
