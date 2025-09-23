@@ -48,21 +48,21 @@ const Events = () => {
   const pastEvents = [
     {
       title: "World Asthma Day",
-      date: "November 15, 2024",
-      attendees: "2,500+",
-      image: "public/Images/IMG-20250613-WA0032.jpg"
+      date: "May 6, 2025",
+      attendees: "250+",
+      image: "https://i.postimg.cc/dVg3M8DW/IMG-20250613-WA0032.jpg"
     },
     {
       title: "World Asthma Day",
-      date: "October 28, 2024",
-      attendees: "1,800+",
-      image: "public/Images/IMG-20250613-WA0033.jpg"
+      date: "May 6, 2025",
+      attendees: "250+",
+      image: "https://i.postimg.cc/ncPc7vKH/IMG-20250613-WA0033.jpg"
     },
     {
       title: "World Asthma Day",
-      date: "October 10-16, 2024",
-      attendees: "3,200+",
-      image: "public/Images/IMG-20250613-WA0034.jpg"
+      date: "May 6, 2025",
+      attendees: "250+",
+      image: "https://i.postimg.cc/hG9SH6kj/IMG-20250613-WA0034.jpg"
     }
   ];
 
