@@ -57,9 +57,9 @@ const Contact = () => {
                 </CardHeader>
                 <CardContent>
                   <p className="text-muted-foreground">
-                    SMAK Headquarters<br />
-                    Medical Education Complex<br />
-                    New Delhi, India - 110029
+                Chakdaha<br />
+                    
+                    West Bengal, India - 741222
                   </p>
                 </CardContent>
               </Card>
@@ -74,7 +74,7 @@ const Contact = () => {
                 <CardContent>
                   <p className="text-muted-foreground">
                     We typically respond within<br />
-                    <span className="font-medium text-foreground">24-48 hours</span><br />
+                    <span className="font-medium text-foreground">Within 24 hours</span><br />
                     during business days
                   </p>
                 </CardContent>
