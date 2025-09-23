@@ -18,7 +18,7 @@ const Footer = () => {
             <p className="text-gray-300 text-sm mb-4">
               Empowering tomorrow's healers through knowledge today. A national platform for medical students to learn, lead & innovate.
             </p>
-            <div className="flex space-x-4">
+            {/* <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
@@ -31,7 +31,7 @@ const Footer = () => {
               <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">
                 <Youtube className="h-5 w-5" />
               </a>
-            </div>
+            </div> */}
           </div>
 
           {/* Quick Links */}
@@ -65,10 +65,10 @@ const Footer = () => {
                 <Mail className="h-4 w-4 text-blue-400" />
                 <span className="text-gray-300">contact@smak.in.net</span>
               </div>
-              <div className="flex items-center space-x-2">
+              {/* <div className="flex items-center space-x-2">
                 <MapPin className="h-4 w-4 text-blue-400" />
                 <span className="text-gray-300">New Delhi, India</span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
