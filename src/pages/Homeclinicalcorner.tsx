@@ -120,20 +120,7 @@ const ClinicalCorner = () => {
                 emergency protocols, and master the art of clinical interpretation with expert guidance.
               </p>
               
-              <div className="flex flex-wrap justify-center gap-6 mb-10">
-                <div className="flex items-center space-x-3 bg-white/20 rounded-full px-8 py-4">
-                  <span className="text-3xl">📋</span>
-                  <span className="font-semibold text-lg">75+ Clinical Cases</span>
-                </div>
-                <div className="flex items-center space-x-3 bg-white/20 rounded-full px-8 py-4">
-                  <span className="text-3xl">⚡</span>
-                  <span className="font-semibold text-lg">50+ Emergency Protocols</span>
-                </div>
-                <div className="flex items-center space-x-3 bg-white/20 rounded-full px-8 py-4">
-                  <span className="text-3xl">🔬</span>
-                  <span className="font-semibold text-lg">200+ Lab & Imaging Studies</span>
-                </div>
-              </div>
+              
 
               <Button 
                 onClick={handleDeepDive}
@@ -146,68 +133,9 @@ const ClinicalCorner = () => {
             </div>
           </div>
 
-          {/* Main Sections Preview */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {clinicalSections.map((section) => (
-              <Card key={section.id} className="group cursor-pointer hover:shadow-2xl transition-all duration-300 hover:scale-105 border-2 border-blue-100 shadow-lg overflow-hidden bg-white">
-                <div className="relative h-64 overflow-hidden">
-                  <img 
-                    src={section.image}
-                    alt={section.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-r ${section.color} opacity-30`}></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="text-center">
-                      <span className="text-7xl mb-4 block drop-shadow-lg">{section.icon}</span>
-                      <Badge className="bg-white/90 text-blue-600 border-2 border-white text-sm px-4 py-1">
-                        {section.stats}
-                      </Badge>
-                    </div>
-                  </div>
-                </div>
-                <CardContent className="p-8">
-                  <h3 className="text-2xl font-bold text-blue-800 mb-4 group-hover:text-blue-600 transition-colors">
-                    {section.title}
-                  </h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed text-base">
-                    {section.description}
-                  </p>
-                  <div className="space-y-3 mb-8">
-                    {section.features.map((feature, index) => (
-                      <div key={index} className="flex items-center space-x-3 text-sm">
-                        <CheckCircle className="h-5 w-5 text-blue-600" />
-                        <span className="text-gray-700">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <Button 
-                    onClick={handleDeepDive}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 text-base font-semibold"
-                  >
-                    <Eye className="h-5 w-5 mr-2" />
-                    Explore {section.title}
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+         
 
-          {/* Statistics Section */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            {stats.map((stat, index) => (
-              <Card key={index} className="border-2 border-blue-100 shadow-lg hover:shadow-xl transition-all duration-300 bg-white">
-                <CardContent className="p-8 text-center">
-                  <div className={`w-16 h-16 ${stat.bgColor} rounded-2xl flex items-center justify-center mx-auto mb-6`}>
-                    <span className="text-3xl">{stat.icon}</span>
-                  </div>
-                  <p className="text-4xl font-bold text-blue-800 mb-2">{stat.value}</p>
-                  <p className="text-sm text-gray-600 font-medium">{stat.title}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-
+          
           {/* Featured Content */}
           <Card className="border-2 border-blue-100 shadow-lg bg-white">
             <CardHeader className="bg-blue-50 border-b border-blue-100">
@@ -222,57 +150,8 @@ const ClinicalCorner = () => {
                 Handpicked clinical content to enhance your learning experience
               </CardDescription>
             </CardHeader>
-            <CardContent className="p-8">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {featuredContent.map((content, index) => (
-                  <div key={index} className="group cursor-pointer bg-white rounded-3xl overflow-hidden border-2 border-blue-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
-                    <div className="relative h-48 overflow-hidden">
-                      <img 
-                        src={content.image} 
-                        alt={content.title}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                      />
-                      <div className="absolute inset-0 bg-blue-600/20"></div>
-                      <Badge className="absolute top-4 right-4 bg-white text-blue-600 border-2 border-white">
-                        {content.difficulty}
-                      </Badge>
-                      <div className="absolute bottom-4 left-4">
-                        <span className="text-3xl drop-shadow-lg">{content.icon}</span>
-                      </div>
-                    </div>
-                    <div className="p-6">
-                      <h4 className="font-bold text-blue-800 group-hover:text-blue-600 transition-colors mb-3 text-lg">
-                        {content.title}
-                      </h4>
-                      <p className="text-sm text-blue-600 font-semibold mb-4">
-                        {content.type}
-                      </p>
-                      <div className="flex space-x-3">
-                        <Button 
-                          size="sm" 
-                          variant="outline"
-                          onClick={() => handlePreview(content)}
-                          className="flex-1 border-blue-200 text-blue-600 hover:bg-blue-50"
-                        >
-                          <Eye className="h-4 w-4 mr-1" />
-                          Preview
-                        </Button>
-                        <Button 
-                          size="sm"
-                          onClick={handleDeepDive}
-                          className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
-                        >
-                          <Download className="h-4 w-4 mr-1" />
-                          Access
-                        </Button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CardContent>
-          </Card>
-
+            
+            </Card>
           {/* Call to Action */}
           <div className="text-center bg-gradient-to-r from-blue-600 to-blue-700 rounded-3xl p-12 text-white">
             <div className="flex justify-center mb-6">
