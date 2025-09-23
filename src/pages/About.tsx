@@ -73,9 +73,9 @@ const About = () => {
   ];
 
   const achievements = [
-    { number: "10,000+", label: "Active Members", icon: Users },
-    { number: "500+", label: "Research Papers Published", icon: BookOpen },
-    { number: "200+", label: "Partner Institutions", icon: Award },
+    { number: "500+", label: "Active Members", icon: Users },
+    { number: "", label: "Research Papers Published", icon: BookOpen },
+    { number: "", label: "Partner Institutions", icon: Award },
     { number: "50+", label: "Cities Reached", icon: Globe }
   ];
 
@@ -367,7 +367,7 @@ const About = () => {
             </p>
           </div>
           
-          <div className="max-w-6xl mx-auto">
+          {/* <div className="max-w-6xl mx-auto">
             <div className="relative overflow-hidden">
               <div 
                 className="flex transition-transform duration-1000 ease-in-out"
@@ -412,7 +412,7 @@ const About = () => {
                 />
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -428,7 +428,7 @@ const About = () => {
             </p>
           </div>
           
-          <div className="max-w-6xl mx-auto">
+          {/* <div className="max-w-6xl mx-auto">
             <div className="relative overflow-hidden">
               <div 
                 className="flex transition-transform duration-1000 ease-in-out"
@@ -446,7 +446,7 @@ const About = () => {
                 ))}
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
 
