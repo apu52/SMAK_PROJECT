@@ -30,10 +30,10 @@ const Members = () => {
     },
     {
       name: "Brishabh Raj Prajesh",
-      college: "SMAK RESEARCH CLUB",
+      college: "",
       year: "",
       specialization: "",
-      position: "Head",
+      position: " ",
       image: "https://i.postimg.cc/L5ByYYTG/Whats-App-Image-2025-08-13-at-13-01-49-9d0aaa5d.jpg",
     },
     {
@@ -41,7 +41,7 @@ const Members = () => {
       college: "SMAK RESEARCH CLUB",
       year: "",
       specialization: "",
-      position: "Co Head",
+      position: "Head",
       image: "https://i.postimg.cc/6pT0w1Dk/Whats-App-Image-2025-08-13-at-13-01-49-3b92b5a0.jpg",
     },
     {
