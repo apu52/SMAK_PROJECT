@@ -75,7 +75,13 @@ const Index = () => {
                 src={imageUrl} 
                 alt={name}
                 className="w-24 h-24 object-cover rounded-full border-4 border-white dark:border-background ring-2 ring-blue-400 dark:ring-blue-500 shadow-lg mx-auto"
-                  style={{ aspectRatio: "1/1", objectPosition: (name === "Ansharah Khan" || name === "Pratik Gupta") ? "top center" : "center", background: "#e8efff" }}
+                  style={{ 
+                    aspectRatio: "1/1", 
+                    objectPosition: (name === "Ansharah Khan" || name === "Pratik Gupta") ? "top center" : 
+                                  (name === "Prof. (Dr.) Vinod Ramakrishna Bhagwat" || name === "Dr. Venugopal Thippiah Setty Nama") ? "top center" : 
+                                  "center", 
+                    background: "#e8efff" 
+                  }}
               />
             ) : (
               <User className="h-12 w-12 text-blue-600" />
@@ -302,8 +308,41 @@ const Index = () => {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-            {/* Example mentor cards, replace with real data as needed */}
-            
+            <TeamMemberCard
+              name="Prof. (Dr) Ashutosh BISWAS"
+              position="Executive Director "
+              institution="AIIMS BHUVANESHWAR"
+              batch=" "
+              imageUrl="https://i.postimg.cc/bYmXB2sB/Whats-App-Image-2025-09-01-at-16-08-11-e1449e1f.jpg"
+            />
+            <TeamMemberCard
+              name="Dr. Surya Bali"
+              position=" "
+              institution="AIIMS BHOPAL"
+              batch=" "
+              imageUrl="https://i.postimg.cc/j2DrXsQ5/Whats-App-Image-2025-09-01-at-16-09-26-fcaf9a7b.jpg"
+            />
+            <TeamMemberCard
+              name="Prof. (Dr.) Vinod Ramakrishna Bhagwat"
+              position="Professor Department of Biochemistry"
+              institution="BKL Walawalkar Rural Medical College & Hospital"
+              batch=" "
+              imageUrl="https://i.postimg.cc/NFLLhvY9/Whats-App-Image-2025-09-01-at-16-54-33-12a399cc.jpg"
+            />
+            <TeamMemberCard
+              name="Dr. Venugopal Thippiah Setty Nama"
+              position="Associate Professor, Biochemistry"
+              institution="RCSM, GMC KOLHAPUR"
+              batch=" "
+              imageUrl="https://i.postimg.cc/N0SbWBRS/Whats-App-Image-2025-09-01-at-16-57-25-2a54a043.jpg"
+            />
+            <TeamMemberCard
+              name="Dr. Amit Marwah "
+              position="MBBS, PhD (Pharmaceutical Science)"
+              institution="GUEST FACULTY at ICMR & CDSCO, New Delhi"
+              batch=" "
+              imageUrl="https://i.postimg.cc/BQ7FhNTw/Whats-App-Image-2025-09-03-at-12-05-38-531f99b2.jpg"
+            />
           </div>
         </div>
       </section>
