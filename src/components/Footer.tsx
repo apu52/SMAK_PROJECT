@@ -15,23 +15,17 @@ const Footer = () => {
               </div>
               <span className="text-xl font-bold">SMAK</span>
             </div>
-            <p className="text-gray-300 text-sm mb-4">
+            <p className="text-gray-300 text-sm mb-6">
               Empowering tomorrow's healers through knowledge today. A national platform for medical students to learn, lead & innovate.
             </p>
-            {/* <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">
-                <Instagram className="h-5 w-5" />
+            <div className="flex space-x-4">
+              <a href="https://www.linkedin.com/company/s-m-a-k-soceity-for-medical-academia-knowledge/" className="text-gray-300 hover:text-blue-400 transition-colors transform hover:scale-110">
+                <Linkedin className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">
-                <Linkedin className="h-5 w-5" />
+              <a href="https://www.instagram.com/smak.community?igsh=OXpvanFyMDI5NjBu" className="text-gray-300 hover:text-blue-400 transition-colors transform hover:scale-110">
+                <Instagram className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-blue-400 transition-colors">
-                <Youtube className="h-5 w-5" />
-              </a>
-            </div> */}
+            </div>
           </div>
 
           {/* Quick Links */}

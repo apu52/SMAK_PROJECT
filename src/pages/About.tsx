@@ -487,7 +487,7 @@ const About = () => {
                 name: "Piyush Mishra",
                 role: "Director of Operations",
                 college: "SMAK",
-                image: " "
+                image: "https://i.postimg.cc/0Qd55r3F/Whats-App-Image-2025-09-03-at-12-47-01-a7e4e401.jpg"
               }
             ].map((member, index) => (
               <Card key={index} className="group text-center hover:shadow-2xl transition-all duration-700 hover:scale-105 hover:-translate-y-6 cursor-pointer border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm overflow-hidden">
