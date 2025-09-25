@@ -8,40 +8,14 @@ import { Calendar, Clock, MapPin, Users } from 'lucide-react';
 const Events = () => {
   const upcomingEvents = [
     {
-      title: "Clinical Case Presentation Series",
-      date: "December 15, 2024",
-      time: "6:00 PM - 8:00 PM IST",
+      title: "Surgical Ethics and Consent in Practice",
+      date: "September 27, 2025",
+      time: "8:00 PM IST",
       location: "Virtual Event",
       type: "Webinar",
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&h=250&fit=crop&crop=center",
-      description: "Join us for an interactive session featuring complex clinical cases presented by senior residents and reviewed by expert clinicians."
-    },
-    {
-      title: "Research Methodology Workshop",
-      date: "December 20, 2024",
-      time: "10:00 AM - 4:00 PM IST",
-      location: "AIIMS Delhi",
-      type: "Workshop",
-      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=250&fit=crop&crop=center",
-      description: "Learn advanced research techniques, statistical analysis, and how to write compelling research papers."
-    },
-    {
-      title: "Annual Medical Quiz Championship",
-      date: "January 5, 2025",
-      time: "2:00 PM - 5:00 PM IST",
-      location: "Multiple Cities",
-      type: "Competition",
-      image: "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=400&h=250&fit=crop&crop=center",
-      description: "Test your medical knowledge against peers from across the country in this comprehensive quiz competition."
-    },
-    {
-      title: "Surgical Skills Simulation Training",
-      date: "January 12, 2025",
-      time: "9:00 AM - 5:00 PM IST",
-      location: "PGIMER Chandigarh",
-      type: "Training",
-      image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=250&fit=crop&crop=center",
-      description: "Hands-on surgical skills training using state-of-the-art simulation equipment and expert guidance."
+      image: "https://i.postimg.cc/FsjKDWDN/Whats-App-Image-2025-09-14-at-15-52-31-074a71b4.jpg",
+      description: "Join us for an insightful webinar on 'Surgical Ethics and Consent in Practice' by Dr. Gunjan Desai, DNB GI Surgery Teaching Faculty at Lilavati Hospital and Director of Edusurg Clinics. This session will focus on the crucial principles of surgical ethics, real-world challenges in obtaining informed consent, and best practices to ensure patient-centered care. Designed for surgeons, medical students, and healthcare professionals, the webinar emphasizes ethical decision-making in clinical practice. Learn how to navigate complex situations, communicate effectively with patients, and uphold professional responsibility. Don't miss this opportunity to strengthen your ethical approach in surgical care.",
+      speaker: "Dr. Gunjan Desai, DNB GI Surgery"
     }
   ];
 
@@ -63,6 +37,15 @@ const Events = () => {
       date: "May 6, 2025",
       attendees: "250+",
       image: "https://i.postimg.cc/hG9SH6kj/IMG-20250613-WA0034.jpg"
+    },
+    {
+      title: "The Forensic Lens: Understanding Suicide Through FMT",
+      date: "September 10, 2025",
+      attendees: "300+",
+      image: "https://i.postimg.cc/JhjHJrvc/Whats-App-Image-2025-09-03-at-23-29-38-c5cc9a21.jpg",
+      description: "SMAK Maharashtra presented an insightful webinar on World Suicide Prevention Day exploring medico-legal, psychological, and forensic dimensions of suicide with Prof. (Dr.) Kiran Kumar Pattnaik, HOD FMT - GMC Balasore.",
+      organizer: "SMAK Maharashtra",
+      speaker: "Prof. (Dr.) Kiran Kumar Pattnaik"
     }
   ];
 
@@ -103,6 +86,29 @@ const Events = () => {
             50% { transform: scale(1.08); }
           }
           .animate-gentle-pulse { animation: gentle-pulse 3s ease-in-out infinite; }
+          
+          @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+          }
+          
+          .card-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 3s ease-in-out infinite;
+          }
+          
+          .glow-blue {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3), 0 0 40px rgba(59, 130, 246, 0.1);
+          }
+          
+          .glow-red {
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.3), 0 0 40px rgba(239, 68, 68, 0.1);
+          }
+          
+          .glow-purple {
+            box-shadow: 0 0 20px rgba(147, 51, 234, 0.3), 0 0 40px rgba(147, 51, 234, 0.1);
+          }
         `}</style>
       </section>
 
@@ -118,46 +124,59 @@ const Events = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {upcomingEvents.map((event, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <div className="aspect-video">
-                  <img 
-                    src={event.image} 
-                    alt={event.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <CardTitle className="text-xl">{event.title}</CardTitle>
-                    <span className="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium dark:bg-blue-900/20 dark:text-blue-400">
-                      {event.type}
-                    </span>
+          <div className="flex justify-center">
+            <div className="max-w-2xl w-full">
+              {upcomingEvents.map((event, index) => (
+                <Card key={index} className="overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/25 hover:scale-[1.02] hover:border-blue-400/50 border-2 border-transparent bg-gradient-to-br from-white to-blue-50/30 dark:from-gray-900 dark:to-blue-950/30 hover:from-blue-50/50 hover:to-green-50/30 dark:hover:from-blue-950/50 dark:hover:to-green-950/30 hover:glow-blue relative group">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 card-shimmer pointer-events-none"></div>
+                  <div className="aspect-video relative z-10">
+                    <img 
+                      src={event.image} 
+                      alt={event.title}
+                      className="w-full h-full object-cover"
+                    />
                   </div>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3 mb-4">
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <Calendar className="h-4 w-4 mr-2 text-blue-600" />
-                      {event.date}
+                  <CardHeader className="relative z-10">
+                    <div className="flex justify-between items-start">
+                      <CardTitle className="text-xl">{event.title}</CardTitle>
+                      <span className="bg-blue-100 text-blue-600 px-2 py-1 rounded-full text-xs font-medium dark:bg-blue-900/20 dark:text-blue-400">
+                        {event.type}
+                      </span>
                     </div>
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <Clock className="h-4 w-4 mr-2 text-blue-600" />
-                      {event.time}
+                  </CardHeader>
+                  <CardContent className="relative z-10">
+                    <div className="space-y-3 mb-4">
+                      <div className="flex items-center text-sm text-muted-foreground">
+                        <Calendar className="h-4 w-4 mr-2 text-blue-600" />
+                        {event.date}
+                      </div>
+                      <div className="flex items-center text-sm text-muted-foreground">
+                        <Clock className="h-4 w-4 mr-2 text-blue-600" />
+                        {event.time}
+                      </div>
+                      <div className="flex items-center text-sm text-muted-foreground">
+                        <MapPin className="h-4 w-4 mr-2 text-blue-600" />
+                        {event.location}
+                      </div>
                     </div>
-                    <div className="flex items-center text-sm text-muted-foreground">
-                      <MapPin className="h-4 w-4 mr-2 text-blue-600" />
-                      {event.location}
-                    </div>
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-4">{event.description}</p>
-                  <Button className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600">
-                    Register Now
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+                    {event.speaker && (
+                      <div className="mb-4 p-3 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
+                        <p className="text-sm text-blue-700 dark:text-blue-300 font-medium">
+                          🎙️ Speaker: {event.speaker}
+                        </p>
+                        <p className="text-xs text-blue-600 dark:text-blue-400 mt-1">
+                          Teaching Faculty at Lilavati Hospital & Director of Edusurg Clinics
+                        </p>
+                      </div>
+                    )}
+                    <p className="text-sm text-muted-foreground mb-4">{event.description}</p>
+                    <Button className="w-full bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600">
+                      Register Now
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -174,24 +193,42 @@ const Events = () => {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {pastEvents.map((event, index) => (
-              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
-                <div className="aspect-video">
+              <Card key={index} className="overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/25 hover:scale-[1.02] hover:border-red-400/50 border-2 border-transparent bg-gradient-to-br from-white to-red-50/20 dark:from-gray-900 dark:to-red-950/20 hover:from-red-50/30 hover:to-pink-50/30 dark:hover:from-red-950/30 dark:hover:to-pink-950/30 hover:glow-red relative group">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 card-shimmer pointer-events-none"></div>
+                <div className="aspect-video relative z-10">
                   <img 
                     src={event.image} 
                     alt={event.title}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <CardHeader>
+                <CardHeader className="relative z-10">
                   <CardTitle className="text-lg">{event.title}</CardTitle>
-                  <CardDescription className="flex items-center">
+                  <CardDescription className="flex items-center mb-2">
                     <Calendar className="h-4 w-4 mr-2" />
                     {event.date}
                   </CardDescription>
+                  {event.organizer && (
+                    <CardDescription className="text-blue-600 font-medium text-sm">
+                      {event.organizer}
+                    </CardDescription>
+                  )}
                 </CardHeader>
-                <CardContent>
+                <CardContent className="relative z-10">
+                  {event.description && (
+                    <p className="text-sm text-muted-foreground mb-3 line-clamp-3">
+                      {event.description}
+                    </p>
+                  )}
+                  {event.speaker && (
+                    <div className="mb-3 p-2 bg-blue-50 dark:bg-blue-950/20 rounded-lg">
+                      <p className="text-xs text-blue-700 dark:text-blue-300 font-medium">
+                        🎙️ Speaker: {event.speaker}
+                      </p>
+                    </div>
+                  )}
                   <div className="flex items-center text-blue-600 font-medium">
                     <Users className="h-4 w-4 mr-2" />
                     {event.attendees} Attendees
@@ -219,8 +256,9 @@ const Events = () => {
               { title: "Competitions", description: "Test your knowledge and skills", icon: "🏆" },
               { title: "Conferences", description: "Large-scale academic gatherings", icon: "🏛️" }
             ].map((category, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="pt-6">
+              <Card key={index} className="text-center overflow-hidden transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/25 hover:scale-[1.05] hover:border-purple-400/50 border-2 border-transparent bg-gradient-to-br from-white to-purple-50/20 dark:from-gray-900 dark:to-purple-950/20 hover:from-purple-50/30 hover:to-violet-50/30 dark:hover:from-purple-950/30 dark:hover:to-violet-950/30 hover:glow-purple relative group">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 card-shimmer pointer-events-none"></div>
+                <CardContent className="pt-6 relative z-10">
                   <div className="text-4xl mb-4">{category.icon}</div>
                   <h3 className="font-semibold text-lg mb-2">{category.title}</h3>
                   <p className="text-sm text-muted-foreground">{category.description}</p>
