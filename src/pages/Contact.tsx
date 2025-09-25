@@ -44,7 +44,7 @@ const Contact = () => {
                   <p className="text-muted-foreground mb-2">General Inquiries:</p>
                   <p className="font-medium mb-3">contact@smak.in.net</p>
                   <p className="text-muted-foreground mb-2">Research Collaborations:</p>
-                  <p className="font-medium">contact@smak.in.net</p>
+                  <p className="font-medium">rc@smak.in.net</p>
                 </CardContent>
               </Card>
 
