@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -10,8 +11,10 @@ const Index = () => {
   const [showBlogPopup, setShowBlogPopup] = React.useState(false);
   const handleBlogPopupOpen = () => setShowBlogPopup(true);
   const handleBlogPopupClose = () => setShowBlogPopup(false);
+  const navigate = useNavigate();
   const handleStartBlog = () => {
-  window.location.href = "/login";
+    // Use client-side navigation to avoid full page reloads/production routing issues
+    navigate('/login');
   };
   // Demo data for events/research activities
   const activities = [
@@ -47,6 +50,12 @@ const Index = () => {
   // State for popup/modal
   const [selectedActivity, setSelectedActivity] = React.useState(null);
   const [showModal, setShowModal] = React.useState(false);
+  // Membership & Mentor form modal state
+  const [showMembershipModal, setShowMembershipModal] = React.useState(false);
+  const [showMentorModal, setShowMentorModal] = React.useState(false);
+  const membershipFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfLuhIPkMYGx-wz4JnIEQr2cNbRdrBbQppYtFugJUb9xKiLDQ/viewform?usp=dialog";
+  const mentorFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeIA469QiTCtdE0VvMASGqhzjjl4405w2R0_rwOaAvy391pow/viewform?usp=dialog";
+
 
   const handleCardClick = (activity) => {
     setSelectedActivity(activity);
@@ -59,6 +68,30 @@ const Index = () => {
   const handleRegister = () => {
     window.open("/register", "_blank");
   };
+
+  // Lock body scroll when any modal is open (membership or mentor)
+  React.useEffect(() => {
+    if (showMembershipModal || showMentorModal || showModal || showBlogPopup) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => { document.body.style.overflow = ''; };
+  }, [showMembershipModal, showMentorModal, showModal, showBlogPopup]);
+
+  // Close modals on Escape (closes the top-most modal state if open)
+  React.useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (showMentorModal) setShowMentorModal(false);
+        else if (showMembershipModal) setShowMembershipModal(false);
+        else if (showModal) handleCloseModal();
+        else if (showBlogPopup) setShowBlogPopup(false);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [showMembershipModal, showMentorModal, showModal, showBlogPopup]);
   const TeamMemberCard = ({ name, position, institution, batch, imageUrl }: { 
     name: string; 
     position: string; 
@@ -363,6 +396,7 @@ const Index = () => {
                 size="lg" 
                 variant="secondary"
                 className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-8"
+                onClick={() => setShowMembershipModal(true)}
               >
                 <Microscope className="mr-2 h-5 w-5" />
                 Membership Form
@@ -371,6 +405,7 @@ const Index = () => {
                 size="lg" 
                 variant="outline"
                 className="border-blue-600 text-blue-600 hover:bg-blue-50 hover:text-blue-700 font-semibold px-8"
+                onClick={() => setShowMentorModal(true)}
               >
                 <BookOpen className="mr-2 h-5 w-5 text-blue-600" />
                 Become a Mentor
@@ -419,6 +454,65 @@ const Index = () => {
               <Button size="lg" className="w-full bg-blue-600 text-white font-semibold hover:bg-blue-700 mt-2" onClick={handleStartBlog}>
                 Start Blog Writing
               </Button>
+            </div>
+          </div>
+        </div>
+      )}
+      {/* Membership Form Modal */}
+      {showMembershipModal && (
+        <div className="fixed inset-0 z-60 flex items-center justify-center bg-black/40 backdrop-blur-sm px-4" onClick={() => setShowMembershipModal(false)}>
+          <div onClick={(e) => e.stopPropagation()} className="bg-white dark:bg-blue-950 rounded-2xl shadow-2xl w-full" style={{ width: 'min(1000px, 92vw)', maxHeight: '80vh' }}>
+            <div className="p-4 md:p-6 relative flex flex-col" style={{ height: '100%' }}>
+              <button className="absolute top-3 right-3 text-blue-600 dark:text-blue-200 text-2xl font-bold" onClick={() => setShowMembershipModal(false)}>&times;</button>
+              <div className="text-center mb-4">
+                <h2 className="text-2xl font-bold text-blue-700 dark:text-blue-200">Membership Form</h2>
+                <p className="text-sm text-muted-foreground">Please complete the form below to join the SMAK Research Club.</p>
+              </div>
+              <div className="w-full rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700" style={{ height: 'calc(80vh - 140px)' }}>
+                <iframe
+                  src={membershipFormUrl}
+                  title="Membership Form"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  className="block h-full"
+                  aria-label="Membership Google Form"
+                />
+              </div>
+              <div className="mt-4 flex items-center justify-between">
+                <Button size="sm" variant="outline" onClick={() => setShowMembershipModal(false)}>Close</Button>
+                <a href={membershipFormUrl} target="_blank" rel="noreferrer" className="text-sm text-blue-600 hover:underline">Open in new tab</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Mentor Form Modal */}
+      {showMentorModal && (
+        <div className="fixed inset-0 z-60 flex items-center justify-center bg-black/40 backdrop-blur-sm px-4" onClick={() => setShowMentorModal(false)}>
+          <div onClick={(e) => e.stopPropagation()} className="bg-white dark:bg-blue-950 rounded-2xl shadow-2xl w-full" style={{ width: 'min(1000px, 92vw)', maxHeight: '80vh' }}>
+            <div className="p-4 md:p-6 relative flex flex-col" style={{ height: '100%' }}>
+              <button className="absolute top-3 right-3 text-blue-600 dark:text-blue-200 text-2xl font-bold" onClick={() => setShowMentorModal(false)}>&times;</button>
+              <div className="text-center mb-4">
+                <h2 className="text-2xl font-bold text-blue-700 dark:text-blue-200">Become a Mentor</h2>
+                <p className="text-sm text-muted-foreground">Share your expertise and guide students — please complete this short form.</p>
+              </div>
+              <div className="w-full rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700" style={{ height: 'calc(80vh - 140px)' }}>
+                <iframe
+                  src={mentorFormUrl}
+                  title="Mentor Form"
+                  width="100%"
+                  height="100%"
+                  frameBorder="0"
+                  className="block h-full"
+                  aria-label="Mentor Google Form"
+                />
+              </div>
+              <div className="mt-4 flex items-center justify-between">
+                <Button size="sm" variant="outline" onClick={() => setShowMentorModal(false)}>Close</Button>
+                <a href={mentorFormUrl} target="_blank" rel="noreferrer" className="text-sm text-blue-600 hover:underline">Open in new tab</a>
+              </div>
             </div>
           </div>
         </div>
